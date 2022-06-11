@@ -1,11 +1,11 @@
-export default  reducer=(state=[],action) =>{
+export default (posts=[],action) =>{
     switch(action.type){
         case 'FETCH_ALL':
-            return state;
+            return action.payload;
         case 'CREATE':
-            return state;
+            return posts;
         default:
-            return state;            
+            return posts;            
 
     }
 }
