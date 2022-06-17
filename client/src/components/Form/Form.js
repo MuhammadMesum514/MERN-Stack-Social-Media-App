@@ -29,10 +29,10 @@ const Form = () => {
                 <TextField name="message" variant="outlined" label="message" fullWidth value={postData.message} onChange={(e) =>setPostData({ ...postData, message: e.target.value })}/>
                 <TextField name="tags" variant="outlined" label="tags" fullWidth value={postData.tags} onChange={(e) =>setPostData({ ...postData, tags: e.target.value })}/>
             <div className={classes.fileInput}>
-                <FileBase type="file" multiple={false} onDone={(base64)=>setPostData({...postData,selectedFile:base64})}/>
+                <FileBase type="file" multiple={false} onDone={({base64})=>setPostData({...postData,selectedFile:base64})}/>
             </div>
             <Button className={classes.buttonSubmit} variant="contained" size="large" color="primary" type="submit" fullWidth >Submit</Button>
-            <Button className={classes.buttonSubmit} variant="contained" size="small" color="secondary" onClick={clear} fullWidth >Clear</Button>
+            <Button  variant="contained" size="small" color="secondary" onClick={clear} fullWidth >Clear</Button>
             </form>
         </Paper>
     );
