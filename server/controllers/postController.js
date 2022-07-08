@@ -24,11 +24,11 @@ export const createPost= async (req,res)=>{
 };
 
 export const updatePost= async (req,res)=>{
-        const {id:_id}=req.param;
-         const post=req.body;
-
-        if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No Post Found'); 
-        const updatedPost= await postMessage.findByIdAndUpdate(_id,post,{new:true});      
+        const {id}=req.param;
+        const { title, message, creator, selectedFile, tags } = req.body;
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post Found'); 
+        const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+         await postMessage.findByIdAndUpdate(_id,updatedPost,{new:true});      
         res.status(200).json(updatedPost);
     };
 

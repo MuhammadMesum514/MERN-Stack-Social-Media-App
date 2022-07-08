@@ -1,6 +1,8 @@
 import * as api from '../api';
 
 //action creators
+//* fetch All posts Action
+
 export const getPosts = () => async(dispatch) => {
 
     try {
@@ -12,6 +14,8 @@ export const getPosts = () => async(dispatch) => {
     }
 }
 
+//* create a new post Action
+
 export const createPost = (Post) => async(dispatch) => {
 
     try {
@@ -22,3 +26,16 @@ export const createPost = (Post) => async(dispatch) => {
         console.log(error.message);        
     }
 }
+
+//* update post Action
+export const updatePost = (id, post) => async (dispatch) => {
+    try {
+        console.table(id);   
+        
+      const { data } = await api.updatePost(id, post);
+        console.log(data);
+      dispatch({ type: 'UPDATE', payload: data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
